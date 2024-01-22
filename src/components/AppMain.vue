@@ -40,15 +40,14 @@ export default {
       <div class="row my-2">
         <div class="col-12">
           <div class="founded-card bg-black p-2">
-            <h4 class="text-light">ciao</h4>
+            <h4 class="text-light">foundes {{ store.listCard.length }}</h4>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-2" v-for="(elem,i) in this.store.listCard">
+            <div class="col-2" v-for="(elem,i) in this.store.listCard">
             <SetCard :singlecard="elem" />
-        </div>
-        
+            </div>
        </div>
     </div>
   </div>
