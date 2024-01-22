@@ -1,22 +1,61 @@
 <script>
+import {store} from '../store'
+import SetCard from './SetCard.vue'
 export default {
-    data() {
-        return {
-
-        };
-    },
-    methods: {
-
-    }
-}
+  data() {
+    return {
+        store
+    };
+  },
+  components:{
+    SetCard
+  },
+  methods: {},
+  
+};
 </script>
 
 <template>
-    <main>
-       
-    </main>
+  <div class="bg-main">
+    <div class="container">
+      <div class="row my-3">
+        <div class="col4">
+          <div class="dropdown my-2">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Alien
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"></a></li>
+              <li><a class="dropdown-item" href="#"></a></li>
+              <li><a class="dropdown-item" href="#"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col-12">
+          <div class="founded-card bg-black p-2">
+            <h4 class="text-light">ciao</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2" v-for="(elem,i) in this.store.listCard">
+            <SetCard :singlecard="elem" />
+        </div>
+        
+       </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-
+div {
+  background-color: orange;
+}
 </style>
