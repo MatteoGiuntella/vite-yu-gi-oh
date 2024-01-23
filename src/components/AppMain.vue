@@ -1,16 +1,28 @@
 <script>
 import { store } from "../store";
 import SetCard from "./SetCard.vue";
+import axios from 'axios';
 export default {
   data() {
     return {
       store,
+      utentSelect : ''
     };
   },
   components: {
     SetCard,
   },
-  methods: {},
+  methods: {
+      utentType (){
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0',{
+            params:{
+              archetype : this.utentSelect,
+            }}).then((response)=>{
+              this.store.listCard = response.data.data
+            })
+            
+      }
+  },
 };
 </script>
 
@@ -19,10 +31,11 @@ export default {
     <div class="container">
       <div class="row my-3">
         <div class="col4">
-          <select class="form-select my-2 " aria-label="Default select example">
-            <option selected>Choose you type</option>
-            <option value="1" v-for="(elem,i) in this.store.selectorCard" >{{ elem.archetype_name }}</option>
+          <select v-model="utentSelect" class="form-select my-2 " aria-label="Default select example">
+            <option selected>Search</option>
+            <option :value="elem.archetype_name" v-for="(elem,i) in this.store.selectorCard" >{{ elem.archetype_name }}</option>
           </select>
+          <button @click="utentType" type="button" class="btn btn-danger">Ricerca</button>
         </div>
       </div>
       <div class="row my-2">
