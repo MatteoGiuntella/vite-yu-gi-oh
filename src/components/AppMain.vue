@@ -1,17 +1,16 @@
 <script>
-import {store} from '../store'
-import SetCard from './SetCard.vue'
+import { store } from "../store";
+import SetCard from "./SetCard.vue";
 export default {
   data() {
     return {
-        store
+      store,
     };
   },
-  components:{
-    SetCard
+  components: {
+    SetCard,
   },
   methods: {},
-  
 };
 </script>
 
@@ -20,21 +19,10 @@ export default {
     <div class="container">
       <div class="row my-3">
         <div class="col4">
-          <div class="dropdown my-2">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Alien
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"></a></li>
-              <li><a class="dropdown-item" href="#"></a></li>
-              <li><a class="dropdown-item" href="#"></a></li>
-            </ul>
-          </div>
+          <select class="form-select my-2 " aria-label="Default select example">
+            <option selected>Choose you type</option>
+            <option value="1" v-for="(elem,i) in this.store.selectorCard" >{{ elem.archetype_name }}</option>
+          </select>
         </div>
       </div>
       <div class="row my-2">
@@ -45,10 +33,10 @@ export default {
         </div>
       </div>
       <div class="row">
-            <div class="col-2" v-for="(elem,i) in this.store.listCard">
-            <SetCard :singlecard="elem" />
-            </div>
-       </div>
+        <div class="col-2" v-for="(elem, i) in this.store.listCard">
+          <SetCard :singlecard="elem" />
+        </div>
+      </div>
     </div>
   </div>
 </template>

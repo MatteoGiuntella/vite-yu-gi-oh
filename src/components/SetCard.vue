@@ -22,7 +22,7 @@ export default {
             {{ singlecard.name }}
         </p>
         <h3 class="card-title">
-            {{singlecard.archetype}}
+            {{ singlecard.archetype }}
         </h3>
     </div>
     </div>

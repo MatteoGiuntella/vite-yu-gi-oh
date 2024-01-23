@@ -29,8 +29,13 @@ export default {
     mounted(){
         axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0').then((response) =>{
             console.log(response)
-        this.store.listCard = response.data.data
+            this.store.listCard = response.data.data
         });
+        axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php').then((response) =>{
+            console.log(response)
+            this.store.selectorCard = response.data
+        });
+
     }
 }
 </script>
